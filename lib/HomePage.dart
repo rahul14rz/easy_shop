@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:no_context_navigation/no_context_navigation.dart'; //Navigation
 
@@ -38,27 +39,27 @@ class HomePage extends StatelessWidget {
         switch (settings.name) {
           case '/':
             return MaterialPageRoute(builder: (context) => MyLogin());
-          case '/hp':
+          case '/home':
             return MaterialPageRoute(builder: (context) => HomePage());
-          case '/sp':
+          case '/smartphone':
             return MaterialPageRoute(builder: (context) => SmartPhone());
-          case '/lp':
+          case '/laptop':
             return MaterialPageRoute(builder: (context) => Laptop());
-          case '/wp':
+          case '/wallpaper':
             return MaterialPageRoute(builder: (context) => WallPaperTv());
-          case '/ms':
+          case '/monitor':
             return MaterialPageRoute(builder: (context) => Monitor());
-          case '/dc':
+          case '/desktop':
             return MaterialPageRoute(builder: (context) => DesktopComputers());
-          case '/hps':
+          case '/headphone':
             return MaterialPageRoute(builder: (context) => HeadPhones());
-          case '/kbs':
+          case '/keyboard':
             return MaterialPageRoute(builder: (context) => KeyBoards());
-          case '/mps':
+          case '/microphone':
             return MaterialPageRoute(builder: (context) => Microphones());
-          case '/me':
+          case '/mouse':
             return MaterialPageRoute(builder: (context) => Mouse());
-          case '/ss':
+          case '/speaker':
             return MaterialPageRoute(builder: (context) => Speakers());
           case '/settings':
             return MaterialPageRoute(builder: (context) => Settings());
@@ -83,209 +84,74 @@ class _MyHomePageState extends State<MyHomePage> {
   Color appBarColor;
   int _selectedIndex = 0;
 
-
   static List<Widget> _widgetOptions = <Widget>[
-
     /* Home Page - index 0 */
     MyHomeWidget(), // views/MyHome.dart
 
     /* My Orders - index 1 */
-    Container(
+    SingleChildScrollView(
       child: Column(
         children: [
-          InkWell(
-            onTap: () {},
-            splashColor: Colors.green,
-            child: Card(
-              elevation: 12,
-              shadowColor: Colors.blueGrey,
-              child: ListTile(
-                leading: Icon(Icons.shopping_cart, color: Colors.green),
-                title: Text('Pixel 5',
-                    style: TextStyle(fontFamily: 'Raleway', fontSize: 18)),
-                trailing: Image.asset(
-                  'assets/smartphones/pixel_5.png',
-                  height: 100,
-                  width: 100,
-                ),
-              ),
-            ),
-          ),
-          InkWell(
-            onTap: () {},
-            splashColor: Colors.green,
-            child: Card(
-              elevation: 12,
-              shadowColor: Colors.blueGrey,
-              child: ListTile(
-                leading: Icon(Icons.shopping_cart, color: Colors.green),
-                title: Text('Galaxy S21',
-                    style: TextStyle(fontFamily: 'Raleway', fontSize: 18)),
-                trailing: Image.asset(
-                  'assets/smartphones/galaxy_s21.png',
-                  height: 100,
-                  width: 100,
-                ),
-              ),
-            ),
-          ),
-          InkWell(
-            onTap: () {},
-            splashColor: Colors.green,
-            child: Card(
-              elevation: 12,
-              shadowColor: Colors.blueGrey,
-              child: ListTile(
-                leading: Icon(Icons.shopping_cart, color: Colors.green),
-                title: Text('OnePlus 9',
-                    style: TextStyle(fontFamily: 'Raleway', fontSize: 18)),
-                trailing: Image.asset(
-                  'assets/smartphones/oneplus_9.png',
-                  height: 100,
-                  width: 100,
-                ),
-              ),
-            ),
-          ),
-          InkWell(
-            onTap: () {},
-            splashColor: Colors.green,
-            child: Card(
-              elevation: 12,
-              shadowColor: Colors.blueGrey,
-              child: ListTile(
-                leading: Icon(Icons.shopping_cart, color: Colors.green),
-                title: Text('Hp Envy',
-                    style: TextStyle(fontFamily: 'Raleway', fontSize: 18)),
-                trailing: Image.asset(
-                  'assets/laptops/hp.png',
-                  height: 100,
-                  width: 100,
-                ),
-              ),
-            ),
-          ),
+          OrdersCardWidget(
+              titleText: 'Pixel 5', trailImg: 'assets/smartphones/pixel_5.png'),
+          OrdersCardWidget(
+              titleText: 'Galaxy S21',
+              trailImg: 'assets/smartphones/galaxy_s21.png'),
+          OrdersCardWidget(
+              titleText: 'OnePlus 9',
+              trailImg: 'assets/smartphones/oneplus_9.png'),
+          OrdersCardWidget(
+              titleText: 'HP Envy', trailImg: 'assets/laptops/hp.png'),
+          OrdersCardWidget(
+              titleText: 'Headphone', trailImg: 'assets/header.jpg'),
+          OrdersCardWidget(titleText: 'Mouse', trailImg: 'assets/header.jpg'),
+          OrdersCardWidget(
+              titleText: 'Keyboard', trailImg: 'assets/header.jpg'),
         ],
       ),
     ),
 
     /* Profile - index 2 */
-    Container(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          CircleAvatar(
-            backgroundImage: AssetImage('assets/profile.png'),
-            radius: 50,
-          ),
-          ConstrainedBox(
-              constraints: BoxConstraints.tight(const Size(300, 60)),
-              child: InkWell(
-                onTap: () {},
+    SingleChildScrollView(
+      child: Container(
+        child: Column(
+          children: <Widget>[
+            CircleAvatar(
+              backgroundImage: AssetImage('assets/profile.png'),
+              radius: 40,
+            ),
+            SizedBox(height: 20),
+            ProfileCardWidget(
+                prefixIcon: Icons.person,
+                listTileText: 'Rahul',
                 splashColor: Colors.red,
-                child: Card(
-                  color: Colors.red,
-                  elevation: 15.0,
-                  shadowColor: Colors.blueGrey,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(100.0),
-                  ),
-                  child: ListTile(
-                    leading: Icon(Icons.person, color: Colors.white, size: 24),
-                    title: Text(
-                      'Rahul',
-                      style: TextStyle(
-                          fontFamily: 'Raleway',
-                          fontSize: 18,
-                          color: Colors.white),
-                    ),
-                  ),
-                ),
-              )),
-          ConstrainedBox(
-            constraints: BoxConstraints.tight(const Size(300, 60)),
-            child: InkWell(
-              onTap: () {},
-              splashColor: Colors.blue,
-              child: Card(
-                color: Colors.blue,
-                elevation: 15.0,
-                shadowColor: Colors.blueGrey,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(100.0),
-                ),
-                child: ListTile(
-                  leading: Icon(Icons.email, color: Colors.white, size: 24),
-                  title: Text(
-                    'abc@gmail.com',
-                    style: TextStyle(
-                        fontFamily: 'Raleway',
-                        fontSize: 18,
-                        color: Colors.white),
-                  ),
-                ),
-              ),
-            ),
-          ),
-          ConstrainedBox(
-            constraints: BoxConstraints.tight(const Size(300, 60)),
-            child: InkWell(
-              onTap: () {},
-              splashColor: Colors.green,
-              child: Card(
-                color: Colors.green,
-                elevation: 15.0,
-                shadowColor: Colors.blueGrey,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(100.0),
-                ),
-                child: ListTile(
-                  leading: Icon(Icons.phone, color: Colors.white, size: 24),
-                  title: Text(
-                    '9876543210',
-                    style: TextStyle(
-                        fontFamily: 'Raleway',
-                        fontSize: 18,
-                        color: Colors.white),
-                  ),
-                ),
-              ),
-            ),
-          ),
-          ConstrainedBox(
-            constraints: BoxConstraints.tight(const Size(300, 60)),
-            child: InkWell(
-              onTap: () {},
-              splashColor: Colors.purple,
-              child: Card(
-                color: Colors.purple,
-                elevation: 15.0,
-                shadowColor: Colors.blueGrey,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(100.0),
-                ),
-                child: ListTile(
-                  leading: Icon(Icons.home, color: Colors.white, size: 24),
-                  title: Text(
-                    'Adhoc s/w, Cbe',
-                    style: TextStyle(
-                        fontFamily: 'Raleway',
-                        fontSize: 18,
-                        color: Colors.white),
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ],
+                cardColor: Colors.red),
+            SizedBox(height: 20),
+            ProfileCardWidget(
+                prefixIcon: Icons.email_rounded,
+                listTileText: 'abc@gmail.com',
+                splashColor: Colors.green,
+                cardColor: Colors.green),
+            SizedBox(height: 20),
+            ProfileCardWidget(
+                prefixIcon: Icons.phone,
+                listTileText: '9876543210',
+                splashColor: Colors.blue,
+                cardColor: Colors.blue),
+            SizedBox(height: 20),
+            ProfileCardWidget(
+                prefixIcon: Icons.location_on_rounded,
+                listTileText: 'Adhoc S/W, CBE',
+                splashColor: Colors.purple,
+                cardColor: Colors.purple),
+          ],
+        ),
       ),
     ),
-
     /* Settings - index 3 */
     Container(
       child: new Settings(),
     ),
-
   ];
 
   void _onItemTapped(int itemIndex) {
@@ -315,7 +181,57 @@ class _MyHomePageState extends State<MyHomePage> {
             style:
                 TextStyle(fontFamily: 'Raleway', fontWeight: FontWeight.bold)),
         backgroundColor: appBarColor,
-        automaticallyImplyLeading: true,
+        actions: <Widget>[
+          IconButton(icon: Icon(Icons.shopping_cart), onPressed: () {}),
+        ],
+        // Search Bar
+        bottom: buildPreferredSize(),
+      ),
+      drawer: Drawer(
+        elevation: 7,
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            UserAccountsDrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.indigo,
+              ),
+              margin: EdgeInsets.zero,
+              accountName: Text('Rahul'),
+              accountEmail: Text('abc@gmail.com'),
+              currentAccountPicture: CircleAvatar(
+                backgroundImage: AssetImage('assets/header.jpg'),
+                child: Text(
+                  "R",
+                  style: TextStyle(fontSize: 40.0),
+                ),
+              ),
+              arrowColor: Colors.white,
+              otherAccountsPictures: [
+                CircleAvatar(
+                  backgroundColor:
+                  Theme.of(context).platform == TargetPlatform.iOS
+                      ? Colors.indigo
+                      : Colors.white,
+                  child: Text(
+                    "A",
+                    style: TextStyle(fontSize: 20.0),
+                  ),
+                ),
+                CircleAvatar(
+                  backgroundColor:
+                  Theme.of(context).platform == TargetPlatform.iOS
+                      ? Colors.indigo
+                      : Colors.white,
+                  child: Text(
+                    "B",
+                    style: TextStyle(fontSize: 20.0),
+                  ),
+                ),
+              ],
+            )
+          ],
+        ),
       ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
@@ -349,5 +265,111 @@ class _MyHomePageState extends State<MyHomePage> {
         onTap: _onItemTapped,
       ),
     );
+  }
+
+  PreferredSize buildPreferredSize() {
+    return PreferredSize(
+      preferredSize: Size(50, 50),
+      child: Container(
+          height: 42.8,
+          margin: const EdgeInsets.all(7.8),
+          child: TextField(
+              decoration: InputDecoration(
+            floatingLabelBehavior: FloatingLabelBehavior.auto,
+            enabledBorder: OutlineInputBorder(
+              gapPadding: 2.0,
+              borderRadius: BorderRadius.all(Radius.circular(10.0)),
+              borderSide: BorderSide(color: Colors.white, width: 1.2),
+            ),
+            focusedBorder: OutlineInputBorder(
+              gapPadding: 2.0,
+              borderRadius: BorderRadius.all(Radius.circular(10.0)),
+              borderSide: BorderSide(color: Colors.indigo, width: 1.2),
+            ),
+            filled: true,
+            fillColor: Colors.white,
+            hintText: 'Search for items here....',
+            hintStyle: TextStyle(
+                color: Colors.grey,
+                fontWeight: FontWeight.bold,
+                fontSize: 14,
+                fontFamily: 'Raleway'),
+            suffixIcon: Icon(Icons.search),
+          ))),
+    );
+  }
+}
+
+class OrdersCardWidget extends StatelessWidget {
+  const OrdersCardWidget({
+    Key key,
+    @required this.titleText,
+    @required this.trailImg,
+  }) : super(key: key);
+
+  final String titleText;
+  final String trailImg;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {},
+      splashColor: Colors.green,
+      child: Card(
+        elevation: 12,
+        shadowColor: Colors.blueGrey,
+        child: ListTile(
+          leading: Icon(Icons.shopping_cart, color: Colors.green),
+          title: Text(titleText,
+              style: TextStyle(fontFamily: 'Raleway', fontSize: 18)),
+          trailing: Image.asset(
+            trailImg,
+            height: 100,
+            width: 100,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ProfileCardWidget extends StatelessWidget {
+  const ProfileCardWidget({
+    Key key,
+    @required this.listTileText,
+    @required this.prefixIcon,
+    @required this.splashColor,
+    @required this.cardColor,
+  }) : super(key: key);
+
+  final String listTileText;
+  final IconData prefixIcon;
+  final Color splashColor;
+  final Color cardColor;
+
+  @override
+  Widget build(BuildContext context) {
+    return ConstrainedBox(
+        constraints: BoxConstraints.tight(const Size(275, 50)),
+        child: InkWell(
+          onTap: () {},
+          splashColor: splashColor,
+          child: Card(
+            color: cardColor,
+            elevation: 15.0,
+            shadowColor: Colors.blueGrey,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(100.0),
+            ),
+            child: ListTile(
+              leading: Icon(prefixIcon, color: Colors.white, size: 24),
+              title: Text(
+                listTileText,
+                style: TextStyle(
+                    fontFamily: 'Raleway', fontSize: 18, color: Colors.white),
+              ),
+            ),
+          ),
+        ));
   }
 }

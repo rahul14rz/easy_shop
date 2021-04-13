@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'HomePage.dart';
 
 void main() => runApp(MyLogin());
@@ -12,7 +13,7 @@ class MyLogin extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       debugShowCheckedModeBanner: false,
-      home: LoginScreen(title: 'Login'),
+      home: LoginScreen(title: 'Easy Shop Login'),
     );
   }
 }
@@ -42,21 +43,183 @@ class _LoginScreenState extends State<LoginScreen> {
         backgroundColor: Color(0XFF2a55a3),
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Container(
+      resizeToAvoidBottomInset: true,
+      body: Container(
+        alignment: Alignment.center,
+        child: SingleChildScrollView(
+          reverse: true,
+          child: Container(
+            child: Column(
+              children: <Widget>[
+                Container(
+                  width: 175,
+                  height: 175,
+                  child: Image.asset(
+                    'assets/adhoc_soft.png',
+                  ),
+                ),
+                SizedBox(height: 10),
+                Container(
+                  width: 300,
+                  height: 45,
+                  child: TextField(
+                    controller: _textController1,
+                    maxLength: 20,
+                    cursorWidth: 2.0,
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontFamily: 'Raleway',
+                    ),
+                    decoration: InputDecoration(
+                      floatingLabelBehavior: FloatingLabelBehavior.auto,
+                      enabledBorder: OutlineInputBorder(
+                        gapPadding: 2.0,
+                        borderRadius: BorderRadius.circular(100.0),
+                        borderSide: BorderSide(
+                          color: Colors.grey,
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        gapPadding: 2.0,
+                        borderRadius: BorderRadius.circular(100.0),
+                        borderSide: BorderSide(
+                          color: Color(0XFF2a55a3),
+                        ),
+                      ),
+                      prefixIcon: Container(
+                        width: 45,
+                        height: 45,
+                        margin: EdgeInsets.only(right: 10),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(100.0),
+                          color: Color(0XFF2a55a3),
+                        ),
+                        child: Icon(Icons.account_circle_rounded,
+                            color: Colors.white),
+                      ),
+                      labelText: 'Username',
+                      labelStyle: TextStyle(color: Color(0XFF2a55a3)),
+                      counterText: '',
+                      filled: true,
+                      fillColor: Colors.white,
+                    ),
+                  ),
+                ),
+                SizedBox(height: 10),
+                Container(
+                  width: 300,
+                  height: 45,
+                  child: TextField(
+                    controller: _textController2,
+                    obscureText: true,
+                    maxLength: 20,
+                    cursorWidth: 2.0,
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontFamily: 'Raleway',
+                    ),
+                    decoration: InputDecoration(
+                      floatingLabelBehavior: FloatingLabelBehavior.auto,
+                      enabledBorder: OutlineInputBorder(
+                        gapPadding: 2.0,
+                        borderRadius: BorderRadius.circular(100.0),
+                        borderSide: BorderSide(
+                          color: Colors.grey,
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        gapPadding: 2.0,
+                        borderRadius: BorderRadius.circular(100.0),
+                        borderSide: BorderSide(
+                          color: Color(0XFF2a55a3),
+                        ),
+                      ),
+                      prefixIcon: Container(
+                        width: 45,
+                        height: 45,
+                        margin: EdgeInsets.only(right: 10),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(100.0),
+                          color: Color(0XFF2a55a3),
+                        ),
+                        child: Icon(Icons.vpn_key_rounded, color: Colors.white),
+                      ),
+                      labelText: 'Password',
+                      labelStyle: TextStyle(color: Color(0XFF2a55a3)),
+                      counterText: '',
+                      filled: true,
+                      fillColor: Colors.white,
+                    ),
+                  ),
+                ),
+                SizedBox(height: 10),
+                Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => HomePage()));
+                        },
+                        child: Text(
+                          'Login',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          elevation: 7,
+                          shadowColor: Colors.grey,
+                          visualDensity: VisualDensity.adaptivePlatformDensity,
+                          primary: Color(0XFF2a55a3),
+                        ),
+                      ),
+                      SizedBox(width: 30),
+                      ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            _textController1.clear();
+                            _textController2.clear();
+                          });
+                        },
+                        child: Text(
+                          'Reset',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          elevation: 7,
+                          shadowColor: Colors.grey,
+                          visualDensity: VisualDensity.adaptivePlatformDensity,
+                          primary: Color(0XFF7cbc53),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 20),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/* child: Container(
+          alignment: Alignment.center,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              SizedBox(height: 10),
               Container(
-                width: 250,
-                height: 250,
+                width: 225,
+                height: 225,
                 child: Image.asset('assets/adhoc_soft.png'),
               ),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
                 child: ConstrainedBox(
-                  constraints: BoxConstraints.tight(const Size (350,50)),
+                  constraints: BoxConstraints.tight(const Size (350,45)),
                   child: TextFormField(
                     controller: _textController1,
                     maxLength: 20,
@@ -79,8 +242,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       prefixIcon: Container(
-                        width: 50,
-                        height: 50,
+                        width: 45,
+                        height: 45,
                         margin: EdgeInsets.only(right: 10),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(100.0),
@@ -102,7 +265,7 @@ class _LoginScreenState extends State<LoginScreen> {
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 8,horizontal: 8),
                   child: ConstrainedBox(
-                    constraints: BoxConstraints.tight(const Size (350,50)),
+                    constraints: BoxConstraints.tight(const Size (350,45)),
                     child: TextFormField(
                       obscureText: true,
                       controller: _textController2,
@@ -125,8 +288,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                         prefixIcon: Container(
-                          width: 50,
-                          height: 50,
+                          width: 45,
+                          height: 45,
                           margin: EdgeInsets.only(right: 10),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(100.0),
@@ -146,7 +309,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   )
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -191,8 +354,4 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ],
           ),
-        ),
-      ),
-    );
-  }
-}
+        ),*/
