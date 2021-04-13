@@ -182,6 +182,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 TextStyle(fontFamily: 'Raleway', fontWeight: FontWeight.bold)),
         backgroundColor: appBarColor,
         actions: <Widget>[
+          IconButton(icon: Icon(Icons.notifications_active), onPressed: () {}),
           IconButton(icon: Icon(Icons.shopping_cart), onPressed: () {}),
         ],
         // Search Bar
@@ -206,30 +207,119 @@ class _MyHomePageState extends State<MyHomePage> {
                   style: TextStyle(fontSize: 40.0),
                 ),
               ),
-              arrowColor: Colors.white,
               otherAccountsPictures: [
                 CircleAvatar(
-                  backgroundColor:
-                  Theme.of(context).platform == TargetPlatform.iOS
-                      ? Colors.indigo
-                      : Colors.white,
+                  backgroundImage: AssetImage('assets/header.jpg'),
                   child: Text(
                     "A",
                     style: TextStyle(fontSize: 20.0),
                   ),
                 ),
                 CircleAvatar(
-                  backgroundColor:
-                  Theme.of(context).platform == TargetPlatform.iOS
-                      ? Colors.indigo
-                      : Colors.white,
+                  backgroundImage: AssetImage('assets/header.jpg'),
                   child: Text(
                     "B",
                     style: TextStyle(fontSize: 20.0),
                   ),
                 ),
               ],
-            )
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.home,
+                color: Colors.indigo,
+              ),
+              title: Text('Home',style: TextStyle(color: Colors.black)),
+              onTap: () {
+                _onItemTapped(0);
+                Navigator.pop(context);
+              },
+            ),
+            ExpansionTile(
+              leading: Icon(
+                Icons.format_list_bulleted,
+                color: Colors.indigo,
+              ),
+              title: Text('Categories'),
+              childrenPadding: EdgeInsets.only(left: 10),
+
+              children: <Widget>[
+                ListTile(
+                  leading: Icon(
+                    Icons.electrical_services,
+                    color: Colors.indigo,
+                  ),
+                  title: Text('Electronics',style: TextStyle(color: Colors.black)),
+                  onTap: () {
+                    navService.pushNamed('/smartphone');
+                    Navigator.pop(context);
+                  },
+                ),
+                ListTile(
+                  leading: Icon(
+                    Icons.audiotrack,
+                    color: Colors.indigo,
+                  ),
+                  title: Text('Accessories',style: TextStyle(color: Colors.black)),
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                ),
+                ListTile(
+                  leading: Icon(
+                    Icons.sd_storage,
+                    color: Colors.indigo,
+                  ),
+                  title: Text('Storage devices',style: TextStyle(color: Colors.black)),
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                ),
+                ListTile(
+                  leading: Icon(
+                    Icons.devices_other,
+                    color: Colors.indigo,
+                  ),
+                  title: Text('Other electronics',style: TextStyle(color: Colors.black)),
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                ),
+              ],
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.shopping_cart,
+                color: Colors.indigo,
+              ),
+              title: Text('My Cart',style: TextStyle(color: Colors.black)),
+              onTap: () {
+                _onItemTapped(1);
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.person,
+                color: Colors.indigo,
+              ),
+              title: Text('Profile',style: TextStyle(color: Colors.black)),
+              onTap: () {
+                _onItemTapped(2);
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.settings,
+                color: Colors.indigo,
+              ),
+              title: Text('Settings',style: TextStyle(color: Colors.black)),
+              onTap: () {
+                _onItemTapped(3);
+                Navigator.pop(context);
+              },
+            ),
           ],
         ),
       ),
