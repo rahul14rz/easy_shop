@@ -4,7 +4,8 @@ import 'package:flutter_page_indicator/flutter_page_indicator.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:no_context_navigation/no_context_navigation.dart';
 
-const List<String> images = [
+
+final List<String> images = [
   'assets/carousel/header_1.jpg',
   'assets/carousel/header_2.jpg',
   'assets/carousel/header_3.jpg',
@@ -32,6 +33,9 @@ class MyHomeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final double rowSliderWidth = MediaQuery.of(context).size.width;
+
     return SingleChildScrollView(
         scrollDirection: Axis.vertical,
         padding: EdgeInsets.symmetric(),
@@ -106,7 +110,7 @@ class MyHomeWidget extends StatelessWidget {
                     autoplayDelay: 4000,
                     layout: SwiperLayout.STACK,
                     itemWidth: 500,
-                    indicatorLayout: PageIndicatorLayout.SLIDE,
+                    indicatorLayout: PageIndicatorLayout.SCALE,
                     autoplay: true,
                     itemCount: images.length,
                     pagination: new SwiperPagination(),
@@ -141,7 +145,7 @@ class MyHomeWidget extends StatelessWidget {
               ),
             ),
             Container(
-              width: 500,
+              width: rowSliderWidth,
               height: 165,
               child: ListView(
                 scrollDirection: Axis.horizontal,
@@ -149,104 +153,16 @@ class MyHomeWidget extends StatelessWidget {
                   Container(
                     child: Row(
                       children: [
-                        InkWell(
-                          child: ConstrainedBox(
-                            constraints: BoxConstraints.tightFor(
-                                width: 150, height: 150),
-                            child: Column(
-                              children: [
-                                Image.asset(
-                                  'assets/carousel/header_2.jpg',
-                                  height: 100,
-                                  fit: BoxFit.cover,
-                                ),
-                                Text(
-                                  'Smartphones',
-                                  style: imgCaption,
-                                ),
-                              ],
-                            ),
-                          ),
-                          onTap: () => navService.pushNamed('/sp'),
-                        ),
-                        InkWell(
-                            child: ConstrainedBox(
-                                constraints: BoxConstraints.tightFor(
-                                    width: 150, height: 150),
-                                child: Column(
-                                  children: [
-                                    Image.asset(
-                                      'assets/carousel/header_3.jpg',
-                                      height: 100,
-                                      fit: BoxFit.cover,
-                                    ),
-                                    Text(
-                                      'Laptops',
-                                      style: imgCaption,
-                                    ),
-                                  ],
-                                )),
-                            onTap: () => navService.pushNamed('/lp')),
-                        InkWell(
-                          child: ConstrainedBox(
-                            constraints:
-                            BoxConstraints.tightFor(width: 150, height: 150),
-                            child: Column(
-                              children: [
-                                Image.asset(
-                                  'assets/header.jpg',
-                                  height: 100,
-                                  fit: BoxFit.cover,
-                                ),
-                                Text(
-                                  'Wallpaper TVs',
-                                  style: imgCaption,
-                                ),
-                              ],
-                            ),
-                          ),
-                          onTap: () => navService.pushNamed('/wp'),
-                        ),
-                        InkWell(
-                          child: ConstrainedBox(
-                            constraints:
-                            BoxConstraints.tightFor(width: 150, height: 150),
-                            child: Column(
-                              children: [
-                                Image.asset(
-                                  'assets/header.jpg',
-                                  height: 100,
-                                  fit: BoxFit.cover,
-                                ),
-                                Text(
-                                  'Monitors',
-                                  style: imgCaption,
-                                ),
-                              ],
-                            ),
-                          ),
-                          onTap: () => navService.pushNamed('/ms'),
-                        ),
-                        InkWell(
-                          child: ConstrainedBox(
-                            constraints:
-                            BoxConstraints.tightFor(width: 150, height: 150),
-                            child: Column(
-                              children: [
-                                Image.asset(
-                                  'assets/header.jpg',
-                                  height: 100,
-                                  fit: BoxFit.cover,
-                                ),
-                                Text(
-                                  'Desktop PCs',
-                                  style: imgCaption,
-                                ),
-                              ],
-                            ),
-                          ),
-                          onTap: () => navService.pushNamed('/dc'),
-                        ),
+                        RowImageWidget(imgCaption: imgCaption, rowImage: 'assets/carousel/header_2.jpg', rowText: 'Smartphones', navPageName: '/smartphone'),
+                        RowImageWidget(imgCaption: imgCaption, rowImage: 'assets/carousel/header_3.jpg', rowText: 'Laptops', navPageName: '/laptop'),
+                        RowImageWidget(imgCaption: imgCaption, rowImage: 'assets/header.jpg', rowText: 'Wallpaper TVs', navPageName: '/wallpaper'),
+                        RowImageWidget(imgCaption: imgCaption, rowImage: 'assets/header.jpg', rowText: 'Monitors', navPageName: '/monitor'),
+                        RowImageWidget(imgCaption: imgCaption, rowImage: 'assets/header.jpg', rowText: 'Desktop PCs', navPageName: '/desktop'),
+                        RowImageWidget(imgCaption: imgCaption, rowImage: 'assets/carousel/header_2.jpg', rowText: 'Smartphones', navPageName: '/smartphone'),
+                        RowImageWidget(imgCaption: imgCaption, rowImage: 'assets/carousel/header_3.jpg', rowText: 'Laptops', navPageName: '/laptop'),
+                        RowImageWidget(imgCaption: imgCaption, rowImage: 'assets/header.jpg', rowText: 'Wallpaper TVs', navPageName: '/wallpaper'),
+                        RowImageWidget(imgCaption: imgCaption, rowImage: 'assets/header.jpg', rowText: 'Monitors', navPageName: '/monitor'),
+                        RowImageWidget(imgCaption: imgCaption, rowImage: 'assets/header.jpg', rowText: 'Desktop PCs', navPageName: '/desktop'),
                       ],
                     ),
                   ),
@@ -279,7 +195,7 @@ class MyHomeWidget extends StatelessWidget {
               ),
             ),
             Container(
-              width: 500,
+              width: rowSliderWidth,
               height: 165,
               child: ListView(
                 scrollDirection: Axis.horizontal,
@@ -287,106 +203,16 @@ class MyHomeWidget extends StatelessWidget {
                   Container(
                     child: Row(
                       children: [
-                        InkWell(
-                          child: ConstrainedBox(
-                            constraints:
-                            BoxConstraints.tightFor(width: 150, height: 150),
-                            child: Column(
-                              children: [
-                                Image.asset(
-                                  'assets/header.jpg',
-                                  height: 100,
-                                  fit: BoxFit.cover,
-                                ),
-                                Text(
-                                  'Headphones',
-                                  style: imgCaption,
-                                ),
-                              ],
-                            ),
-                          ),
-                          onTap: () => navService.pushNamed('/hps'),
-                        ),
-                        InkWell(
-                          child: ConstrainedBox(
-                            constraints:
-                            BoxConstraints.tightFor(width: 150, height: 150),
-                            child: Column(
-                              children: [
-                                Image.asset(
-                                  'assets/header.jpg',
-                                  height: 100,
-                                  fit: BoxFit.cover,
-                                ),
-                                Text(
-                                  'Keyboards',
-                                  style: imgCaption,
-                                ),
-                              ],
-                            ),
-                          ),
-                          onTap: () => navService.pushNamed('/kbs'),
-                        ),
-                        InkWell(
-                          child: ConstrainedBox(
-                            constraints:
-                            BoxConstraints.tightFor(width: 150, height: 150),
-                            child: Column(
-                              children: [
-                                Image.asset(
-                                  'assets/header.jpg',
-                                  height: 100,
-                                  fit: BoxFit.cover,
-                                ),
-                                Text(
-                                  'Microphones',
-                                  style: imgCaption,
-                                ),
-                              ],
-                            ),
-                          ),
-                          onTap: () => navService.pushNamed('/mps'),
-                        ),
-                        InkWell(
-                          child: ConstrainedBox(
-                            constraints:
-                            BoxConstraints.tightFor(width: 150, height: 150),
-                            child: Column(
-                              children: [
-                                Image.asset(
-                                  'assets/header.jpg',
-                                  height: 100,
-                                  fit: BoxFit.cover,
-                                ),
-                                Text(
-                                  'Mouse',
-                                  style: imgCaption,
-                                ),
-                              ],
-                            ),
-                          ),
-                          onTap: () => navService.pushNamed('/me'),
-                        ),
-                        InkWell(
-                          child: ConstrainedBox(
-                            constraints:
-                            BoxConstraints.tightFor(width: 150, height: 150),
-                            child: Column(
-                              children: [
-                                Image.asset(
-                                  'assets/header.jpg',
-                                  height: 100,
-                                  fit: BoxFit.cover,
-                                ),
-                                Text(
-                                  'Speakers',
-                                  style: imgCaption,
-                                ),
-                              ],
-                            ),
-                          ),
-                          onTap: () => navService.pushNamed('/ss'),
-                        ),
+                        RowImageWidget(imgCaption: imgCaption, rowImage: 'assets/header.jpg', rowText: 'Headphones', navPageName: '/headphone'),
+                        RowImageWidget(imgCaption: imgCaption, rowImage: 'assets/header.jpg', rowText: 'Keyboards', navPageName: '/keyboard'),
+                        RowImageWidget(imgCaption: imgCaption, rowImage: 'assets/header.jpg', rowText: 'Microphones', navPageName: '/microphone'),
+                        RowImageWidget(imgCaption: imgCaption, rowImage: 'assets/header.jpg', rowText: 'Mouse', navPageName: '/mouse'),
+                        RowImageWidget(imgCaption: imgCaption, rowImage: 'assets/header.jpg', rowText: 'Speakers', navPageName: '/speaker'),
+                        RowImageWidget(imgCaption: imgCaption, rowImage: 'assets/header.jpg', rowText: 'Headphones', navPageName: '/headphone'),
+                        RowImageWidget(imgCaption: imgCaption, rowImage: 'assets/header.jpg', rowText: 'Keyboards', navPageName: '/keyboard'),
+                        RowImageWidget(imgCaption: imgCaption, rowImage: 'assets/header.jpg', rowText: 'Microphones', navPageName: '/microphone'),
+                        RowImageWidget(imgCaption: imgCaption, rowImage: 'assets/header.jpg', rowText: 'Mouse', navPageName: '/mouse'),
+                        RowImageWidget(imgCaption: imgCaption, rowImage: 'assets/header.jpg', rowText: 'Speakers', navPageName: '/speaker'),
                       ],
                     ),
                   ),
@@ -419,7 +245,7 @@ class MyHomeWidget extends StatelessWidget {
               ),
             ),
             Container(
-              width: 500,
+              width: rowSliderWidth,
               height: 165,
               child: ListView(
                 scrollDirection: Axis.horizontal,
@@ -427,74 +253,16 @@ class MyHomeWidget extends StatelessWidget {
                   Container(
                     child: Row(
                       children: [
-                        ConstrainedBox(
-                          constraints:
-                          BoxConstraints.tightFor(width: 150, height: 150),
-                          child: Column(
-                            children: [
-                              Image.asset(
-                                'assets/header.jpg',
-                                height: 100,
-                                fit: BoxFit.cover,
-                              ),
-                              Text(
-                                'External HDD',
-                                style: imgCaption,
-                              ),
-                            ],
-                          ),
-                        ),
-                        ConstrainedBox(
-                          constraints:
-                          BoxConstraints.tightFor(width: 150, height: 150),
-                          child: Column(
-                            children: [
-                              Image.asset(
-                                'assets/header.jpg',
-                                height: 100,
-                                fit: BoxFit.cover,
-                              ),
-                              Text(
-                                'SD cards',
-                                style: imgCaption,
-                              ),
-                            ],
-                          ),
-                        ),
-                        ConstrainedBox(
-                          constraints:
-                          BoxConstraints.tightFor(width: 150, height: 150),
-                          child: Column(
-                            children: [
-                              Image.asset(
-                                'assets/header.jpg',
-                                height: 100,
-                                fit: BoxFit.cover,
-                              ),
-                              Text(
-                                'Pen drives',
-                                style: imgCaption,
-                              ),
-                            ],
-                          ),
-                        ),
-                        ConstrainedBox(
-                          constraints:
-                          BoxConstraints.tightFor(width: 150, height: 150),
-                          child: Column(
-                            children: [
-                              Image.asset(
-                                'assets/header.jpg',
-                                height: 100,
-                                fit: BoxFit.cover,
-                              ),
-                              Text(
-                                'SSD',
-                                style: imgCaption,
-                              ),
-                            ],
-                          ),
-                        ),
+                        RowImageWidget(imgCaption: imgCaption, rowImage: 'assets/header.jpg', rowText: 'External HDDs', navPageName: ''),
+                        RowImageWidget(imgCaption: imgCaption, rowImage: 'assets/header.jpg', rowText: 'SD cards', navPageName: ''),
+                        RowImageWidget(imgCaption: imgCaption, rowImage: 'assets/header.jpg', rowText: 'Pen drives', navPageName: ''),
+                        RowImageWidget(imgCaption: imgCaption, rowImage: 'assets/header.jpg', rowText: 'SSD', navPageName: ''),
+                        RowImageWidget(imgCaption: imgCaption, rowImage: 'assets/header.jpg', rowText: 'External HDDs', navPageName: ''),
+                        RowImageWidget(imgCaption: imgCaption, rowImage: 'assets/header.jpg', rowText: 'SD cards', navPageName: ''),
+                        RowImageWidget(imgCaption: imgCaption, rowImage: 'assets/header.jpg', rowText: 'Pen drives', navPageName: ''),
+                        RowImageWidget(imgCaption: imgCaption, rowImage: 'assets/header.jpg', rowText: 'SSD', navPageName: ''),
+                        RowImageWidget(imgCaption: imgCaption, rowImage: 'assets/header.jpg', rowText: 'External HDDs', navPageName: ''),
+                        RowImageWidget(imgCaption: imgCaption, rowImage: 'assets/header.jpg', rowText: 'SD cards', navPageName: ''),
                       ],
                     ),
                   ),
@@ -527,7 +295,7 @@ class MyHomeWidget extends StatelessWidget {
               ),
             ),
             Container(
-              width: 500,
+              width: rowSliderWidth,
               height: 165,
               child: ListView(
                 scrollDirection: Axis.horizontal,
@@ -535,75 +303,16 @@ class MyHomeWidget extends StatelessWidget {
                   Container(
                     child: Row(
                       children: [
-                        ConstrainedBox(
-                          constraints:
-                          BoxConstraints.tightFor(width: 150, height: 150),
-                          child: Column(
-                            children: [
-                              Image.asset(
-                                'assets/header.jpg',
-                                height: 100,
-                                fit: BoxFit.cover,
-                              ),
-                              Text(
-                                'Refrigerators',
-                                style: imgCaption,
-                              ),
-                            ],
-                          ),
-                        ),
-                        ConstrainedBox(
-                          constraints:
-                          BoxConstraints.tightFor(width: 150, height: 150),
-                          child: Column(
-                            children: [
-                              Image.asset(
-                                'assets/header.jpg',
-                                height: 100,
-                                fit: BoxFit.cover,
-                              ),
-                              Text(
-                                'Washing Machine',
-                                style: imgCaption,
-                                textAlign: TextAlign.center,
-                              ),
-                            ],
-                          ),
-                        ),
-                        ConstrainedBox(
-                          constraints:
-                          BoxConstraints.tightFor(width: 150, height: 150),
-                          child: Column(
-                            children: [
-                              Image.asset(
-                                'assets/header.jpg',
-                                height: 100,
-                                fit: BoxFit.cover,
-                              ),
-                              Text(
-                                'Mixer Grinders',
-                                style: imgCaption,
-                              ),
-                            ],
-                          ),
-                        ),
-                        ConstrainedBox(
-                          constraints:
-                          BoxConstraints.tightFor(width: 150, height: 150),
-                          child: Column(
-                            children: [
-                              Image.asset(
-                                'assets/header.jpg',
-                                height: 100,
-                                fit: BoxFit.cover,
-                              ),
-                              Text(
-                                'TV',
-                                style: imgCaption,
-                              ),
-                            ],
-                          ),
-                        ),
+                        RowImageWidget(imgCaption: imgCaption, rowImage: 'assets/header.jpg', rowText: 'Refrigerators', navPageName: ''),
+                        RowImageWidget(imgCaption: imgCaption, rowImage: 'assets/header.jpg', rowText: 'Washing machine', navPageName: ''),
+                        RowImageWidget(imgCaption: imgCaption, rowImage: 'assets/header.jpg', rowText: 'Mixer Grinders', navPageName: ''),
+                        RowImageWidget(imgCaption: imgCaption, rowImage: 'assets/header.jpg', rowText: 'Television', navPageName: ''),
+                        RowImageWidget(imgCaption: imgCaption, rowImage: 'assets/header.jpg', rowText: 'Refrigerators', navPageName: ''),
+                        RowImageWidget(imgCaption: imgCaption, rowImage: 'assets/header.jpg', rowText: 'Washing machine', navPageName: ''),
+                        RowImageWidget(imgCaption: imgCaption, rowImage: 'assets/header.jpg', rowText: 'Mixer Grinders', navPageName: ''),
+                        RowImageWidget(imgCaption: imgCaption, rowImage: 'assets/header.jpg', rowText: 'Television', navPageName: ''),
+                        RowImageWidget(imgCaption: imgCaption, rowImage: 'assets/header.jpg', rowText: 'Refrigerators', navPageName: ''),
+                        RowImageWidget(imgCaption: imgCaption, rowImage: 'assets/header.jpg', rowText: 'Washing machine', navPageName: ''),
                       ],
                     ),
                   ),
@@ -616,3 +325,52 @@ class MyHomeWidget extends StatelessWidget {
       );
   }
 }
+
+/* RowImageWidget */
+class RowImageWidget extends StatelessWidget {
+  const RowImageWidget({
+    Key key,
+    @required this.imgCaption,
+    @required this.rowImage,
+    @required this.rowText,
+    @required this.navPageName,
+  }) : super(key: key);
+
+  final TextStyle imgCaption;
+
+  final String rowImage;
+
+  final String rowText;
+
+  final String navPageName;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      child: ConstrainedBox(
+        constraints: BoxConstraints.tightFor(
+            width: 150, height: 150),
+        child: Column(
+          children: [
+            Image.asset(
+              rowImage,
+              height: 100,
+              fit: BoxFit.cover,
+            ),
+            Text(
+              rowText,
+              style: imgCaption,
+            ),
+          ],
+        ),
+      ),
+      onTap: () => navService.pushNamed(navPageName),
+    );
+  }
+}
+
+
+
+
+
+
