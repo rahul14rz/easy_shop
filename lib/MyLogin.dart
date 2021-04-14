@@ -46,6 +46,11 @@ class _LoginScreenState extends State<LoginScreen> {
       resizeToAvoidBottomInset: true,
       body: Container(
         alignment: Alignment.center,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/login_bg.jpg'),
+          )
+        ),
         child: SingleChildScrollView(
           reverse: true,
           child: Container(

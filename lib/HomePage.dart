@@ -32,6 +32,7 @@ class HomePage extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.indigo,
         visualDensity: VisualDensity.adaptivePlatformDensity,
+        fontFamily: 'Raleway',
       ),
       home: MyHomePage(),
       navigatorKey: NavigationService.navigationKey,
@@ -179,7 +180,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(appBarTitle,
             style:
-                TextStyle(fontFamily: 'Raleway', fontWeight: FontWeight.bold)),
+                TextStyle(fontWeight: FontWeight.bold)),
         backgroundColor: appBarColor,
         actions: <Widget>[
           IconButton(icon: Icon(Icons.notifications_active), onPressed: () {}),
@@ -386,8 +387,8 @@ class _MyHomePageState extends State<MyHomePage> {
             hintStyle: TextStyle(
                 color: Colors.grey,
                 fontWeight: FontWeight.bold,
-                fontSize: 14,
-                fontFamily: 'Raleway'),
+                fontSize: 14
+            ),
             suffixIcon: Icon(Icons.search),
           ))),
     );
@@ -415,7 +416,7 @@ class OrdersCardWidget extends StatelessWidget {
         child: ListTile(
           leading: Icon(Icons.shopping_cart, color: Colors.green),
           title: Text(titleText,
-              style: TextStyle(fontFamily: 'Raleway', fontSize: 18)),
+              style: TextStyle(fontSize: 18)),
           trailing: Image.asset(
             trailImg,
             height: 100,
@@ -460,7 +461,7 @@ class ProfileCardWidget extends StatelessWidget {
               title: Text(
                 listTileText,
                 style: TextStyle(
-                    fontFamily: 'Raleway', fontSize: 18, color: Colors.white),
+                     fontSize: 18, color: Colors.white),
               ),
             ),
           ),
