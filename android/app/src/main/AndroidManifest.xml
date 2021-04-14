@@ -2,7 +2,7 @@
     package="com.rahul.demo.easy_shop">
    <application
         android:label="Easy Shop"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
