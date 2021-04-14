@@ -69,6 +69,7 @@ flutter:
     - assets/header.jpg
     - assets/profile.png
     - assets/adhoc_soft.png
+    - assets/adhoc_soft_w.png
     - assets/login_bg.jpg
     - assets/carousel/
     - assets/smartphones/

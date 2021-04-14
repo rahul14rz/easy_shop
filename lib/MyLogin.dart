@@ -61,7 +61,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   width: 175,
                   height: 175,
                   child: Image.asset(
-                    'assets/adhoc_soft.png',
+                    'assets/adhoc_soft_w.png',
                   ),
                 ),
                 SizedBox(height: 10),
