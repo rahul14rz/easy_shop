@@ -1,7 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:no_context_navigation/no_context_navigation.dart'; //Navigation
 
 import 'MyLogin.dart'; // Login Page
@@ -186,10 +185,7 @@ class _MyHomePageState extends State<MyHomePage> {
           IconButton(icon: Icon(Icons.notifications_active), onPressed: () {}),
           IconButton(icon: Icon(Icons.shopping_cart), onPressed: () {}),
         ],
-        systemOverlayStyle: SystemUiOverlayStyle(
-          statusBarColor: Colors.indigo,
-          statusBarBrightness: Brightness.dark,
-        ),
+
         // Search Bar
         bottom: buildPreferredSize(),
       ),

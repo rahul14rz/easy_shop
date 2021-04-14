@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:splashscreen/splashscreen.dart';
 import 'MyLogin.dart';
 
-void main() =>  runApp(MaterialApp(home: MyApp()));
-
+void main() => runApp(MaterialApp(home: MyApp()));
 
 class MyApp extends StatefulWidget {
   _SplashScreenState createState() => _SplashScreenState();
@@ -12,22 +12,34 @@ class MyApp extends StatefulWidget {
 class _SplashScreenState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return SplashScreen(
-      seconds: 5,
-      navigateAfterSeconds: AfterSplash(),
-      backgroundColor: Color(0xff444b6f),
-      title: Text(
-        'Easy Shop',
-        style: TextStyle(fontFamily: 'Raleway',
-            fontSize: 24,
-            color: Colors.white,
-            fontWeight: FontWeight.w900,
-            fontStyle: FontStyle.normal),
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        systemNavigationBarColor: Colors.white,
+        statusBarIconBrightness: Brightness.light,
+        systemNavigationBarIconBrightness: Brightness.dark,
       ),
-      image: Image.asset('assets/adhoc_soft.png',color: Colors.white,),
-      photoSize: 100.0,
-      loaderColor: Colors.white,
-      pageRoute: _createRoute(),
+      child: new SplashScreen(
+        seconds: 5,
+        navigateAfterSeconds: AfterSplash(),
+        backgroundColor: Color(0xff444b6f),
+        title: Text(
+          'Easy Shop',
+          style: TextStyle(
+              fontFamily: 'Raleway',
+              fontSize: 24,
+              color: Colors.white,
+              fontWeight: FontWeight.w900,
+              fontStyle: FontStyle.normal),
+        ),
+        image: Image.asset(
+          'assets/adhoc_soft.png',
+          color: Colors.white,
+        ),
+        photoSize: 100.0,
+        loaderColor: Colors.white,
+        pageRoute: _createRoute(),
+      ),
     );
   }
 }
@@ -43,10 +55,7 @@ class AfterSplash extends StatelessWidget {
         child: Text(
           'Hello!',
           style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontFamily: 'Raleway',
-            fontSize: 18
-          ),
+              fontWeight: FontWeight.bold, fontFamily: 'Raleway', fontSize: 18),
         ),
       ),
     );
