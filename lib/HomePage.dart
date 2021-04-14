@@ -229,7 +229,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 Icons.home,
                 color: Colors.indigo,
               ),
-              title: Text('Home',style: TextStyle(color: Colors.black)),
+              title: Text('Home', style: TextStyle(color: Colors.black)),
               onTap: () {
                 _onItemTapped(0);
                 Navigator.pop(context);
@@ -242,14 +242,14 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               title: Text('Categories'),
               childrenPadding: EdgeInsets.only(left: 10),
-
               children: <Widget>[
                 ListTile(
                   leading: Icon(
                     Icons.electrical_services,
                     color: Colors.indigo,
                   ),
-                  title: Text('Electronics',style: TextStyle(color: Colors.black)),
+                  title: Text('Electronics',
+                      style: TextStyle(color: Colors.black)),
                   onTap: () {
                     navService.pushNamed('/smartphone');
                     Navigator.pop(context);
@@ -260,7 +260,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     Icons.audiotrack,
                     color: Colors.indigo,
                   ),
-                  title: Text('Accessories',style: TextStyle(color: Colors.black)),
+                  title: Text('Accessories',
+                      style: TextStyle(color: Colors.black)),
                   onTap: () {
                     Navigator.pop(context);
                   },
@@ -270,7 +271,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     Icons.sd_storage,
                     color: Colors.indigo,
                   ),
-                  title: Text('Storage devices',style: TextStyle(color: Colors.black)),
+                  title: Text('Storage devices',
+                      style: TextStyle(color: Colors.black)),
                   onTap: () {
                     Navigator.pop(context);
                   },
@@ -280,7 +282,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     Icons.devices_other,
                     color: Colors.indigo,
                   ),
-                  title: Text('Other electronics',style: TextStyle(color: Colors.black)),
+                  title: Text('Other electronics',
+                      style: TextStyle(color: Colors.black)),
                   onTap: () {
                     Navigator.pop(context);
                   },
@@ -292,7 +295,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 Icons.shopping_cart,
                 color: Colors.indigo,
               ),
-              title: Text('My Cart',style: TextStyle(color: Colors.black)),
+              title: Text('My Cart', style: TextStyle(color: Colors.black)),
               onTap: () {
                 _onItemTapped(1);
                 Navigator.pop(context);
@@ -303,7 +306,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 Icons.person,
                 color: Colors.indigo,
               ),
-              title: Text('Profile',style: TextStyle(color: Colors.black)),
+              title: Text('Profile', style: TextStyle(color: Colors.black)),
               onTap: () {
                 _onItemTapped(2);
                 Navigator.pop(context);
@@ -314,7 +317,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 Icons.settings,
                 color: Colors.indigo,
               ),
-              title: Text('Settings',style: TextStyle(color: Colors.black)),
+              title: Text('Settings', style: TextStyle(color: Colors.black)),
               onTap: () {
                 _onItemTapped(3);
                 Navigator.pop(context);
