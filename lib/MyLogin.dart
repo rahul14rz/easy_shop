@@ -40,7 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0XFF2a55a3),
+        backgroundColor: Colors.indigo,
         title: Text(widget.title),
       ),
       resizeToAvoidBottomInset: true,
@@ -49,6 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
         decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage('assets/login_bg.jpg'),
+            fit: BoxFit.cover,
           )
         ),
         child: SingleChildScrollView(
